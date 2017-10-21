@@ -1,6 +1,5 @@
 
 import database.DBConnection;
-import database.Position;
 import database.PositionDAO;
 import database.UserDAO;
 
