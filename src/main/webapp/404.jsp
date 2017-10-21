@@ -3,14 +3,13 @@
 <html lang="ru">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>О нас</title>
+    <title>Ошибка</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/style.css">
 </head>
 <body>
 <header>
     <img src="${pageContext.request.contextPath}/img/ecstasy_logo.jpg" alt="Логотип" height="200" width="200">
-    <h1>О нас</h1>
-    <p>Контактная и др информация</p>
+    <h1>Ошибка</h1>
 </header>
 <nav>
     <ul>
@@ -21,7 +20,7 @@
     </ul>
 </nav>
 <main>
-    <h2 style="text-align: center">какая-то информация</h2>
+    <h2 style="text-align: center">Что-то пошло не так...</h2>
 </main>
 <footer>
     <address>
