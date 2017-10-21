@@ -1,0 +1,12 @@
+/*Стили таблици добавления пользователей*/
+
+table {
+    border-collapse: collapse;
+}
+
+td, th {
+    border: none;
+    padding: 3px;
+    font-weight: normal;
+    text-align: right;
+}
