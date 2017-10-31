@@ -8,7 +8,7 @@ class URLmap {
 
     static {
 
-        URLList.put("", "/main.jsp");
+        URLList.put("/", "/main.jsp");
         URLList.put("/about", "/about.jsp");
         URLList.put("/users", "/users_search.jsp");
         URLList.put("/users/add", "/users_add.jsp");

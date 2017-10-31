@@ -17,17 +17,14 @@ public class UsersServlet extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String url = req.getRequestURI().substring(req.getServletPath().length());
-        if (URLmap.getURLList().containsKey(url)) {
-            String key = req.getParameter("key");
-            String value = req.getParameter("value");
-            req.setAttribute("users", new UserDAO(connection).getUsersList(key, value));
-            req.setAttribute("positions", new PositionDAO(connection).getPositionsList(key, value));
-            if (key == null && value == null) {
-                req.setAttribute("button", false);
-            } else req.setAttribute("button", true);
-            req.getRequestDispatcher(URLmap.getURLList().get(url)).forward(req, resp);
-        } else req.getRequestDispatcher(URLmap.getURLList().get("404")).forward(req, resp);
+        String key = req.getParameter("key");
+        String value = req.getParameter("value");
+        req.setAttribute("users", new UserDAO(connection).getUsersList(key, value));
+        req.setAttribute("positions", new PositionDAO(connection).getPositionsList(key, value));
+        if (req.getQueryString() == null) {
+            req.setAttribute("button", false);
+        } else req.setAttribute("button", true);
+        req.getRequestDispatcher(URLmap.getURLList().get(URLFilter.getUrl())).forward(req, resp);
     }
 
     @Override
@@ -126,7 +123,7 @@ public class UsersServlet extends HttpServlet {
             connection.close();
             System.out.println("Connection down");
         } catch (SQLException e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
     }
 

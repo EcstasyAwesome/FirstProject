@@ -14,4 +14,15 @@
         <servlet-name>UsersServlet</servlet-name>
         <url-pattern>/company/*</url-pattern>
     </servlet-mapping>
+
+    <!--filter-->
+    <filter>
+        <filter-name>UrlFilter</filter-name>
+        <filter-class>URLFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>UrlFilter</filter-name>
+        <url-pattern>/company/*</url-pattern>
+    </filter-mapping>
+    <!--filter-->
 </web-app>
