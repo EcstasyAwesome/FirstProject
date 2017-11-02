@@ -11,7 +11,7 @@ public class PositionDAO {
         this.connection = connection;
     }
 
-    private Position getPositionsFromResultSet(ResultSet resultSet) throws SQLException {
+    private Position getPositionFromResultSet(ResultSet resultSet) throws SQLException {
         Position result = new Position();
         result.setId(resultSet.getInt("position_id"));
         result.setName(resultSet.getString("position_name"));
@@ -25,7 +25,7 @@ public class PositionDAO {
         String requestWithParam = "SELECT * FROM positions WHERE " + key + "='" + value + "'";
         try (ResultSet resultSet = connection.createStatement().executeQuery(key!=null&&key.equals("position_id") ? requestWithParam : request)) {
             while (resultSet.next()) {
-                result.add(getPositionsFromResultSet(resultSet));
+                result.add(getPositionFromResultSet(resultSet));
             }
         } catch (SQLException e) {
             System.out.println(e);
