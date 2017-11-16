@@ -2,7 +2,7 @@ package database;
 
 import java.util.Date;
 
-public class Member {
+public final class Member {
     private String login;
     private String password;
     private String surname;
