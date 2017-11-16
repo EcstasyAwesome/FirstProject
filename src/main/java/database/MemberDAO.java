@@ -1,9 +1,6 @@
 package database;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,13 +18,15 @@ public class MemberDAO {
         result.setSurname(resultSet.getString("member_surname"));
         result.setFirstName(resultSet.getString("member_firstName"));
         result.setLastName(resultSet.getString("member_lastName"));
+        result.setRegisterDate(resultSet.getDate("member_registerDate"));
         return result;
     }
 
-    public List<Member> getMembersList() {
+    public List<Member> getMembersList(String login, String password) {
         List<Member> result = new ArrayList<>();
         String request = "SELECT * FROM members";
-        try (ResultSet resultSet = connection.createStatement().executeQuery(request)) {
+        String requestWithParam = "SELECT * FROM members WHERE member_login='" + login + "', member_password='" + password + "'";
+        try (ResultSet resultSet = connection.createStatement().executeQuery(login == null ? request : requestWithParam)) {
             while (resultSet.next()) {
                 result.add(getMemberFromResultSet(resultSet));
             }
@@ -38,13 +37,14 @@ public class MemberDAO {
     }
 
     public void registerMember(String login, String password, String surname, String firstName, String lastName) {
-        String request = "INSERT INTO members VALUES (?,?,?,?,?)";
+        String request = "INSERT INTO members VALUES (?,?,?,?,?,?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(request)) {
             preparedStatement.setString(1, login);
             preparedStatement.setString(2, password);
             preparedStatement.setString(3, surname);
             preparedStatement.setString(4, firstName);
             preparedStatement.setString(5, lastName);
+            preparedStatement.setDate(6, new Date(new java.util.Date().getTime()));
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);

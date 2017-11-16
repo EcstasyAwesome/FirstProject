@@ -1,11 +1,14 @@
 package database;
 
+import java.util.Date;
+
 public class Member {
     private String login;
     private String password;
     private String surname;
     private String firstName;
     private String lastName;
+    private Date registerDate;
 
     public String getLogin() {
         return login;
@@ -45,5 +48,13 @@ public class Member {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public Date getRegisterDate() {
+        return registerDate;
+    }
+
+    public void setRegisterDate(Date registerDate) {
+        this.registerDate = registerDate;
     }
 }
