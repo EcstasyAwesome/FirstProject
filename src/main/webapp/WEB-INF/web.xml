@@ -6,16 +6,16 @@
          version="3.1">
     <!-- Here you go. -->
     <display-name>Archetype Created Web Application</display-name>
-    <servlet>
-        <servlet-name>UsersServlet</servlet-name>
-        <servlet-class>UsersServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>UsersServlet</servlet-name>
+    <!--1 step. Login-->
+    <filter>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
         <url-pattern>/company/*</url-pattern>
-    </servlet-mapping>
-
-    <!--filter-->
+    </filter-mapping>
+    <!--2 step. URL-->
     <filter>
         <filter-name>UrlFilter</filter-name>
         <filter-class>URLFilter</filter-class>
@@ -24,5 +24,13 @@
         <filter-name>UrlFilter</filter-name>
         <url-pattern>/company/*</url-pattern>
     </filter-mapping>
-    <!--filter-->
+    <!--3 step. Servlet-->
+    <servlet>
+        <servlet-name>UsersServlet</servlet-name>
+        <servlet-class>UsersServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UsersServlet</servlet-name>
+        <url-pattern>/company/*</url-pattern>
+    </servlet-mapping>
 </web-app>
