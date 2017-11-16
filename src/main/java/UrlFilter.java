@@ -2,7 +2,7 @@ import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
-public class URLFilter implements Filter {
+public class UrlFilter implements Filter {
 
     private static String url;
 
@@ -12,7 +12,7 @@ public class URLFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        System.out.println("Init");
+        System.out.println("-> UrlFilter запущен");
     }
 
     @Override
@@ -23,13 +23,13 @@ public class URLFilter implements Filter {
             url = "/";
         } else url = req.getPathInfo();
 
-        if (URLmap.getURLList().containsKey(url)) chain.doFilter(request, response);
-        else req.getRequestDispatcher(URLmap.getURLList().get("404")).forward(request, response);
+        if (UrlMap.getInstance().getUrlList().containsKey(url)) chain.doFilter(request, response);
+        else req.getRequestDispatcher(UrlMap.getInstance().getUrlList().get("404")).forward(request, response);
 
     }
 
     @Override
     public void destroy() {
-        System.out.println("Destroy");
+        System.out.println("-> UrlFilter остановлен");
     }
 }

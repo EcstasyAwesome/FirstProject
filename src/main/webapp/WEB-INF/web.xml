@@ -6,7 +6,7 @@
          version="3.1">
     <!-- Here you go. -->
     <display-name>Archetype Created Web Application</display-name>
-    <!--1 step. Login-->
+    <!--Login filter-->
     <filter>
         <filter-name>LoginFilter</filter-name>
         <filter-class>LoginFilter</filter-class>
@@ -15,16 +15,16 @@
         <filter-name>LoginFilter</filter-name>
         <url-pattern>/company/*</url-pattern>
     </filter-mapping>
-    <!--2 step. URL-->
+    <!--URL filter-->
     <filter>
         <filter-name>UrlFilter</filter-name>
-        <filter-class>URLFilter</filter-class>
+        <filter-class>UrlFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>UrlFilter</filter-name>
         <url-pattern>/company/*</url-pattern>
     </filter-mapping>
-    <!--3 step. Servlet-->
+    <!--Main servlet-->
     <servlet>
         <servlet-name>UsersServlet</servlet-name>
         <servlet-class>UsersServlet</servlet-class>

@@ -24,7 +24,7 @@ public class UsersServlet extends HttpServlet {
         if (req.getQueryString() == null) {
             req.setAttribute("button", false);
         } else req.setAttribute("button", true);
-        req.getRequestDispatcher(URLmap.getURLList().get(URLFilter.getUrl())).forward(req, resp);
+        req.getRequestDispatcher(UrlMap.getInstance().getUrlList().get(UrlFilter.getUrl())).forward(req, resp);
     }
 
     @Override
@@ -112,19 +112,15 @@ public class UsersServlet extends HttpServlet {
     }
 
     @Override
-    public void init() throws ServletException {
-        connection = new DBConnection().getConnection();
-        System.out.println("Connection up");
+    public void init() {
+        System.out.println("-> Сервлет запущен");
+        connection = DBConnection.getInstance().getConnection();
     }
 
     @Override
     public void destroy() {
-        try {
-            connection.close();
-            System.out.println("Connection down");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        System.out.println("-> Сервлет остановлен");
+        DBConnection.getInstance().closeConnection();
     }
 
 }
