@@ -9,6 +9,7 @@ public class UrlMap {
 
     private UrlMap() {
         urlList.put("/", "/main.jsp");
+        urlList.put("/login", "/login.jsp");
         urlList.put("/about", "/about.jsp");
         urlList.put("/users", "/users_search.jsp");
         urlList.put("/users/add", "/users_add.jsp");
@@ -18,7 +19,7 @@ public class UrlMap {
         urlList.put("/positions/add", "/positions_add.jsp");
         urlList.put("/positions/update", "/positions_update.jsp");
         urlList.put("/positions/delete", "/positions_delete.jsp");
-        urlList.put("404", "/404.jsp");
+        urlList.put("/404", "/404.jsp");
     }
 
     public static UrlMap getInstance(){

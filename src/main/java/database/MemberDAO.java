@@ -22,17 +22,25 @@ public class MemberDAO {
         return result;
     }
 
-    public List<Member> getMembersList(String login, String password) {
+    public List<Member> getMembersList() {
         List<Member> result = new ArrayList<>();
         String request = "SELECT * FROM members";
-        String requestWithParam = "SELECT * FROM members WHERE member_login='" + login + "', member_password='" + password + "'";
-        try (ResultSet resultSet = connection.createStatement().executeQuery(login == null ? request : requestWithParam)) {
+        try (ResultSet resultSet = connection.createStatement().executeQuery(request)) {
             while (resultSet.next()) {
                 result.add(getMemberFromResultSet(resultSet));
             }
         } catch (SQLException e) {
             System.out.println(e);
         }
+        return result;
+    }
+
+    public Member checkMember(String login) throws SQLException {
+        String request = "SELECT * FROM members WHERE member_login='" + login + "'";
+        ResultSet resultSet = connection.createStatement().executeQuery(request);
+        resultSet.next();
+        Member result = getMemberFromResultSet(resultSet);
+        resultSet.close();
         return result;
     }
 
@@ -70,7 +78,7 @@ public class MemberDAO {
     public void deleteMember(String login) {
         String request = "DELETE FROM members WHERE member_login=?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(request)) {
-            preparedStatement.setString(1,login);
+            preparedStatement.setString(1, login);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
