@@ -5,7 +5,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Изменить должность</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/style.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/updateTable.css">
 </head>
 <body>
 <header>
@@ -47,13 +46,13 @@
                 <input type="hidden" name="form" value="updatePosition">
                 <table>
                     <tr>
-                        <td>Должность</td>
-                        <td>Доп. информация</td>
+                        <td class="update-table">Должность</td>
+                        <td class="update-table">Доп. информация</td>
                     </tr>
                     <tr>
-                        <td><input type="text" size="15" value="${positions.get(0).getName()}" placeholder="Выберите ID"
+                        <td class="update-table"><input type="text" size="15" value="${positions.get(0).getName()}" placeholder="Выберите ID"
                                    name="position_name" required></td>
-                        <td><textarea name="position_description" rows="5"
+                        <td class="update-table"><textarea name="position_description" rows="5"
                                       required>${positions.get(0).getDescription()}</textarea></td>
                     </tr>
                 </table>

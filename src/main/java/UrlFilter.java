@@ -13,7 +13,7 @@ public class UrlFilter implements Filter {
     }
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+    public void init(FilterConfig filterConfig) {
         System.out.println("-> UrlFilter запущен");
     }
 
@@ -28,7 +28,7 @@ public class UrlFilter implements Filter {
         if (UrlMap.getInstance().getUrlList().containsKey(url)) { // валидация ссылки
             if (req.getRequestURI().equals("/company/login")) { // ниже логика авторизации
                 if (session.getAttribute("sessionMember") != null)
-                    resp.sendRedirect("/company/404");// profile page
+                    resp.sendRedirect("/company");// profile page in future
                 else chain.doFilter(request, response);
             } else if (session.getAttribute("sessionMember") != null) chain.doFilter(request, response);
             else if (session.getAttribute("sessionMember") == null)

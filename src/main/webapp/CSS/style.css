@@ -38,15 +38,10 @@ nav {
     display: block;
     background-color: #eee;
     border: 1px solid #ddd;
-    height: 55px;
+    height: 45px;
     width: 100%;
     max-width: 1000px;
     margin: auto;
-}
-
-nav ul, nav li {
-    float: left;
-    margin-right: 22px
 }
 
 main {
@@ -91,4 +86,56 @@ footer {
 
 footer small, footer a {
     color: #ffffff;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+/*Стили таблици добавления пользователей*/
+.add-table {
+    border: none;
+    padding: 3px;
+    font-weight: normal;
+    text-align: right;
+}
+
+/*Стили таблици изменения пользователей*/
+.update-table {
+    border: none;
+    padding: 3px;
+    font-weight: normal;
+    text-align: center;
+}
+
+/*Стили таблици поиска пользователей*/
+.search-table {
+    border: solid 1px black;
+    padding: 3px;
+    font-weight: normal;
+    text-align: center;
+}
+
+/*Стили таблици заголовков*/
+.table-top {
+    border: solid 1px black;
+    background: #eee;
+    font-weight: bold;
+}
+
+/*Стили таблици главного меню*/
+.nav-menu {
+    border: none;
+    width: 100%;
+    height: 100%;
+}
+
+#nav-menu-left {
+    text-align: left;
+    padding-left: 10px;
+}
+
+#nav-menu-right {
+    text-align: right;
+    padding-right: 10px;
 }

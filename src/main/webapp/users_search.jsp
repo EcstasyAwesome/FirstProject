@@ -5,7 +5,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Пользователи</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/style.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/searchTable.css">
 </head>
 <body>
 <header>
@@ -26,37 +25,37 @@
         <br>
         <table align="center">
             <tr>
-                <th width="40" class="top">ID</th>
-                <th width="130" class="top">Фамилия</th>
-                <th width="130" class="top">Имя</th>
-                <th width="130" class="top">Отчество</th>
-                <th width="130" class="top">Телефон</th>
-                <th width="130" class="top">Должность</th>
+                <th width="40" class="table-top">ID</th>
+                <th width="130" class="table-top">Фамилия</th>
+                <th width="130" class="table-top">Имя</th>
+                <th width="130" class="table-top">Отчество</th>
+                <th width="130" class="table-top">Телефон</th>
+                <th width="130" class="table-top">Должность</th>
             </tr>
             <c:if test="${users!=null}">
                 <c:forEach items="${users}" var="user">
                     <tr>
-                        <td>${user.getId()}</td>
-                        <td>${user.getSurname()}</td>
-                        <td>${user.getFirstName()}</td>
-                        <td>${user.getSecondName()}</td>
-                        <td>${user.getPhoneNumber()}</td>
+                        <td class="search-table">${user.getId()}</td>
+                        <td class="search-table">${user.getSurname()}</td>
+                        <td class="search-table">${user.getFirstName()}</td>
+                        <td class="search-table">${user.getSecondName()}</td>
+                        <td class="search-table">${user.getPhoneNumber()}</td>
                         <c:if test="${positions!=null}">
                             <c:forEach items="${positions}" var="position">
                                 <c:if test="${position.getId()==user.getPosition()}">
-                                    <td>${position.getName()}</td>
+                                    <td class="search-table">${position.getName()}</td>
                                 </c:if>
                             </c:forEach>
                         </c:if>
                         <c:if test="${positions.isEmpty()}">
-                            <td>${user.getPosition()}</td>
+                            <td class="search-table">${user.getPosition()}</td>
                         </c:if>
                     </tr>
                 </c:forEach>
             </c:if>
             <c:if test="${users.isEmpty()}">
                 <tr>
-                    <td colspan="6">Данные отсуствуют</td>
+                    <td class="search-table" colspan="6">Данные отсуствуют</td>
                 </tr>
             </c:if>
         </table>

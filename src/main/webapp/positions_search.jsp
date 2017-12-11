@@ -5,7 +5,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Должностя</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/style.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/searchTable.css">
 </head>
 <body>
 <header>
@@ -26,22 +25,22 @@
         <br>
         <table align="center">
             <tr>
-                <th width="40" class="top">ID</th>
-                <th width="200" class="top">Должность</th>
-                <th width="400" class="top">Доп. информация</th>
+                <th width="40" class="table-top">ID</th>
+                <th width="200" class="table-top">Должность</th>
+                <th width="400" class="table-top">Доп. информация</th>
             </tr>
             <c:if test="${positions!=null}">
                 <c:forEach items="${positions}" var="position">
                     <tr>
-                        <td>${position.getId()}</td>
-                        <td>${position.getName()}</td>
-                        <td>${position.getDescription()}</td>
+                        <td class="search-table">${position.getId()}</td>
+                        <td class="search-table">${position.getName()}</td>
+                        <td class="search-table">${position.getDescription()}</td>
                     </tr>
                 </c:forEach>
             </c:if>
             <c:if test="${positions.isEmpty()}">
                 <tr>
-                    <td colspan="3">Данные отсуствуют</td>
+                    <td class="search-table" colspan="3">Данные отсуствуют</td>
                 </tr>
             </c:if>
         </table>

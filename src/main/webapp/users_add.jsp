@@ -5,7 +5,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Добавить пользователя</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/style.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/addTable.css">
 </head>
 <body>
 <header>
@@ -31,30 +30,24 @@
             </h4>
             <table>
                 <tr>
-                    <th>Фамилия:</th>
-                    <th><input type="text" name="user_surname" placeholder=" Введите фамилию" size="20" required
-                               autofocus>
-                    </th>
+                    <td class="add-table">Фамилия:</td>
+                    <td class="add-table"><input type="text" name="user_surname" placeholder=" Введите фамилию" size="20" required autofocus></td>
                 </tr>
                 <tr>
-                    <th>Имя:</th>
-                    <th><input type="text" name="user_firstName" placeholder=" Введите имя" size="20" required
-                               autofocus>
-                    </th>
+                    <td class="add-table">Имя:</td>
+                    <td class="add-table"><input type="text" name="user_firstName" placeholder=" Введите имя" size="20" required autofocus></td>
                 </tr>
                 <tr>
-                    <th>Отчество:</th>
-                    <th><input type="text" name="user_secondName" placeholder=" Введите отчество" size="20" required
-                               autofocus></th>
+                    <td class="add-table">Отчество:</td>
+                    <td class="add-table"><input type="text" name="user_secondName" placeholder=" Введите отчество" size="20" required autofocus></td>
                 </tr>
                 <tr>
-                    <th>Телефон:</th>
-                    <th><input type="text" name="user_phoneNumber" placeholder=" Введите номер телефона" size="20"
-                               required autofocus></th>
+                    <td class="add-table">Телефон:</td>
+                    <td class="add-table"><input type="text" name="user_phoneNumber" placeholder=" Введите номер телефона" size="20" required autofocus></td>
                 </tr>
                 <tr>
-                    <th>Должность:</th>
-                    <th>
+                    <td class="add-table">Должность:</td>
+                    <td class="add-table">
                         <select style="width: 100%" form="add" name="position_id" required>
                             <option value="0" selected disabled>Выберите должность</option>
                             <c:if test="${positions!=null}">
@@ -66,10 +59,10 @@
                                 <option disabled>Список пуст</option>
                             </c:if>
                         </select>
-                    </th>
+                    </td>
                 </tr>
                 <tr>
-                    <th colspan="2"><input type="submit" value="Добавить"></th>
+                    <td class="add-table" colspan="2"><input type="submit" value="Добавить"></td>
                 </tr>
             </table>
         </form>

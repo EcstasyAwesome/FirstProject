@@ -5,7 +5,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Изменить пользователя</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/style.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/updateTable.css">
 </head>
 <body>
 <header>
@@ -48,22 +47,22 @@
                 <input type="hidden" name="form" value="updateUser">
                 <table>
                     <tr>
-                        <td>Фамилия</td>
-                        <td>Имя</td>
-                        <td>Отчество</td>
-                        <td>Телефон</td>
-                        <td>Должность</td>
+                        <td class="update-table">Фамилия</td>
+                        <td class="update-table">Имя</td>
+                        <td class="update-table">Отчество</td>
+                        <td class="update-table">Телефон</td>
+                        <td class="update-table">Должность</td>
                     </tr>
                     <tr>
-                        <td><input type="text" size="15" value="${users.get(0).getSurname()}" placeholder="Выберите ID"
+                        <td class="update-table"><input type="text" size="15" value="${users.get(0).getSurname()}" placeholder="Выберите ID"
                                    name="user_surname" required></td>
-                        <td><input type="text" size="15" value="${users.get(0).getFirstName()}"
+                        <td class="update-table"><input type="text" size="15" value="${users.get(0).getFirstName()}"
                                    placeholder="Выберите ID" name="user_firstName" required></td>
-                        <td><input type="text" size="15" value="${users.get(0).getSecondName()}"
+                        <td class="update-table"><input type="text" size="15" value="${users.get(0).getSecondName()}"
                                    placeholder="Выберите ID" name="user_secondName" required></td>
-                        <td><input type="text" size="15" value="${users.get(0).getPhoneNumber()}"
+                        <td class="update-table"><input type="text" size="15" value="${users.get(0).getPhoneNumber()}"
                                    placeholder="Выберите ID" name="user_phoneNumber" required></td>
-                        <td><select form="update" name="position_id">
+                        <td class="update-table"><select form="update" name="position_id">
                             <c:if test="${positions!=null}">
                                 <c:forEach items="${positions}" var="position">
                                     <c:if test="${users.get(0).getPosition()==position.getId()}">

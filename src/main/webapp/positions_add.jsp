@@ -5,7 +5,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Добавить должность</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/style.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/addTable.css">
 </head>
 <body>
 <header>
@@ -29,17 +28,17 @@
             <h4>Заполните форму</h4>
             <table>
                 <tr>
-                    <td>Должность:</td>
-                    <td><input type="text" name="position_name" placeholder=" Введите название" size="18" required
+                    <td class="add-table">Должность:</td>
+                    <td class="add-table"><input type="text" name="position_name" placeholder=" Введите название" size="18" required
                                autofocus>
                     </td>
                 </tr>
                 <tr>
-                    <td>Доп. информация:</td>
-                    <td><textarea name="position_description" placeholder=" Ведите описание" rows="5"></textarea></td>
+                    <td class="add-table">Доп. информация:</td>
+                    <td class="add-table"><textarea name="position_description" placeholder=" Ведите описание" rows="5"></textarea></td>
                 </tr>
                 <tr>
-                    <td colspan="2"><input type="submit" value="Добавить"></td>
+                    <td class="add-table" colspan="2"><input type="submit" value="Добавить"></td>
                 </tr>
             </table>
         </form>
