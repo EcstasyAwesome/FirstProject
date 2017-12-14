@@ -10,6 +10,9 @@ public class UrlMap {
     private UrlMap() {
         urlList.put("/", "/main.jsp");
         urlList.put("/login", "/login.jsp");
+        urlList.put("/profile", "/profile.jsp");
+        urlList.put("/edit", "/edit.jsp");
+        urlList.put("/register", "/register.jsp");
         urlList.put("/about", "/about.jsp");
         urlList.put("/users", "/users_search.jsp");
         urlList.put("/users/add", "/users_add.jsp");

@@ -12,12 +12,22 @@
     <h1>Ошибка</h1>
 </header>
 <nav>
-    <ul>
-        <li><a href="/company">Главная</a></li>
-        <li><a href="/company/positions">Должностя</a></li>
-        <li><a href="/company/users">Пользователи</a></li>
-        <li><a href="/company/about">О нас</a></li>
-    </ul>
+    <table class="nav-menu">
+        <tr>
+            <td id="nav-menu-left">
+                <a href="/company">Главная</a> |
+                <a href="/company/positions">Должностя</a> |
+                <a href="/company/users">Пользователи</a> |
+                <a href="/company/about">О нас</a>
+            </td>
+            <td id="nav-menu-right">
+                <a href="/company/profile">Профиль</a> |
+                <a href="/company/edit">Редактировать</a> |
+                <a href="#">Выйти</a>
+                </ul>
+            </td>
+        </tr>
+    </table>
 </nav>
 <main>
     <h2 style="text-align: center">Что-то пошло не так...</h2>

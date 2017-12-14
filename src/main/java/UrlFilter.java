@@ -28,7 +28,7 @@ public class UrlFilter implements Filter {
         if (UrlMap.getInstance().getUrlList().containsKey(url)) { // валидация ссылки
             if (req.getRequestURI().equals("/company/login")) { // ниже логика авторизации
                 if (session.getAttribute("sessionMember") != null)
-                    resp.sendRedirect("/company");// profile page in future
+                    resp.sendRedirect("/company/profile");// profile page in future
                 else chain.doFilter(request, response);
             } else if (session.getAttribute("sessionMember") != null) chain.doFilter(request, response);
             else if (session.getAttribute("sessionMember") == null)

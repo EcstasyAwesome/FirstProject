@@ -22,8 +22,8 @@
                 <a href="/company/about">О нас</a>
             </td>
             <td id="nav-menu-right">
-                <a href="/profile">Профиль</a> |
-                <a href="/register">Редактировать</a> |
+                <a href="/company/profile">Профиль</a> |
+                <a href="/company/edit">Редактировать</a> |
                 <a href="#">Выйти</a>
                 </ul>
             </td>
@@ -31,32 +31,7 @@
     </table>
 </nav>
 <main>
-    <article>
-        <h2 style="text-align: center">Добро пожаловать</h2>
-    </article>
-    <aside>
-        <h4>Профиль</h4>
-        <table border="0">
-            <tr>
-                <td>Фамилия: ${sessionMember.getSurname()}</td>
-            </tr>
-            <tr>
-                <td>Имя: ${sessionMember.getFirstName()}</td>
-            </tr>
-            <tr>
-                <td>Отчество: ${sessionMember.getLastName()}</td>
-            </tr>
-            <tr>
-                <td>Регистрация: ${sessionMember.getRegisterDate()}</td>
-            </tr>
-            <tr>
-                <td><a href="#" style="color: #EF3B3A">Редактировать</a></td>
-            </tr>
-            <tr>
-                <td><a href="#" style="color: #EF3B3A">Выйти</a></td>
-            </tr>
-        </table>
-    </aside>
+    <h2 style="text-align: center">Добро пожаловать</h2>
 </main>
 <footer>
     <address>

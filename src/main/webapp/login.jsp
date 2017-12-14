@@ -10,10 +10,12 @@
 <div class="login-page">
     <div class="form">
         <form class="login-form" method="post">
-            <input type="text" name="login" placeholder="логин" required autofocus/>
+            <input type="text" name="login" value="${login}" placeholder="логин" required autofocus/>
             <input type="password" name="password" placeholder="пароль" required/>
             <button>войти</button>
-            <p class="error">${login_error}</p>
+            <c:if test="${login_error!=null}">
+                <p class="error">${login_error}</p>
+            </c:if>
             <p class="message">Не зарегистрированы? <a href="#">Создать аккаунт</a></p>
         </form>
     </div>

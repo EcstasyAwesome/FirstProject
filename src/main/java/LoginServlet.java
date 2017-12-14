@@ -29,10 +29,11 @@ public class LoginServlet extends HttpServlet {
                     resp.sendRedirect("/company");
                 } else {
                     req.setAttribute("login_error", "Ошибка доступа. Не правильный пароль");
+                    req.setAttribute("login",login);
                     req.getRequestDispatcher("/login.jsp").forward(req, resp);
                 }
             } catch (SQLException e) {
-                req.setAttribute("login_error", "Пользователь '" + login + "' не существует");
+                req.setAttribute("login_error", "Пользователь '" + login + "' не зарегистрирован");
                 req.getRequestDispatcher("/login.jsp").forward(req, resp);
             }
         }
