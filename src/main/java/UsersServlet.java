@@ -32,7 +32,7 @@ public class UsersServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String method = req.getParameter("method");
         if (method != null) {
             switch (method) {
@@ -47,7 +47,7 @@ public class UsersServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String form = req.getParameter("form");
         int id;
         String surname;
@@ -60,18 +60,18 @@ public class UsersServlet extends HttpServlet {
         if (form != null) {
             switch (form) {
                 case "addUser":
-                    surname = new String(req.getParameter("user_surname").getBytes("ISO-8859-1"), "UTF-8");
-                    firstName = new String(req.getParameter("user_firstName").getBytes("ISO-8859-1"), "UTF-8");
-                    secondName = new String(req.getParameter("user_secondName").getBytes("ISO-8859-1"), "UTF-8");
+                    surname = req.getParameter("user_surname");
+                    firstName = req.getParameter("user_firstName");
+                    secondName = req.getParameter("user_secondName");
                     phoneNumber = Long.parseLong(req.getParameter("user_phoneNumber"));
                     position = Integer.parseInt(req.getParameter("position_id"));
                     new UserDAO(connection).addUser(surname, firstName, secondName, phoneNumber, position);
                     resp.sendRedirect("/company/users");
                     break;
                 case "updateUser":
-                    surname = new String(req.getParameter("user_surname").getBytes("ISO-8859-1"), "UTF-8");
-                    firstName = new String(req.getParameter("user_firstName").getBytes("ISO-8859-1"), "UTF-8");
-                    secondName = new String(req.getParameter("user_secondName").getBytes("ISO-8859-1"), "UTF-8");
+                    surname = req.getParameter("user_surname");
+                    firstName = req.getParameter("user_firstName");
+                    secondName = req.getParameter("user_secondName");
                     phoneNumber = Long.parseLong(req.getParameter("user_phoneNumber"));
                     position = Integer.parseInt(req.getParameter("position_id"));
                     id = Integer.parseInt(req.getParameter("user_id"));
@@ -79,15 +79,15 @@ public class UsersServlet extends HttpServlet {
                     resp.sendRedirect("/company/users?key=user_id&value=" + id);
                     break;
                 case "addPosition":
-                    name = new String(req.getParameter("position_name").getBytes("ISO-8859-1"), "UTF-8");
-                    description = new String(req.getParameter("position_description").getBytes("ISO-8859-1"), "UTF-8");
+                    name = req.getParameter("position_name");
+                    description = req.getParameter("position_description");
                     new PositionDAO(connection).addPosition(name, description);
                     resp.sendRedirect("/company/positions");
                     break;
                 case "updatePosition":
                     id = Integer.parseInt(req.getParameter("position_id"));
-                    name = new String(req.getParameter("position_name").getBytes("ISO-8859-1"), "UTF-8");
-                    description = new String(req.getParameter("position_description").getBytes("ISO-8859-1"), "UTF-8");
+                    name = req.getParameter("position_name");
+                    description = req.getParameter("position_description");
                     new PositionDAO(connection).updatePosition(id, name, description);
                     resp.sendRedirect("/company/positions");
                     break;
@@ -96,7 +96,7 @@ public class UsersServlet extends HttpServlet {
     }
 
     @Override
-    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String form = req.getParameter("form");
         int id;
         if (form != null) {
