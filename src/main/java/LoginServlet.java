@@ -1,6 +1,4 @@
-import database.DBConnection;
-import database.Member;
-import database.MemberDAO;
+import database.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -23,9 +21,9 @@ public class LoginServlet extends HttpServlet {
         String password = req.getParameter("password");
         if (login != null && password != null) {
             try {
-                Member member = new MemberDAO(DBConnection.getInstance().getConnection()).checkMember(login);
-                if (member.getPassword().equals(password)) {
-                    session.setAttribute("sessionMember", member);
+                User user = new UserDAO(DBConnection.getInstance().getConnection()).checkUser(login);
+                if (user.getPassword().equals(password)) {
+                    session.setAttribute("sessionUser", user);
                     resp.sendRedirect("/company");
                 } else {
                     req.setAttribute("login_error", "Ошибка доступа. Не правильный пароль");

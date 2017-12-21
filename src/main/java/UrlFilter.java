@@ -1,3 +1,5 @@
+import database.User;
+
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,17 +25,15 @@ public class UrlFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse resp = (HttpServletResponse) response;
         HttpSession session = req.getSession(true);
-        if (req.getPathInfo() == null) url = "/"; // получение ссылки
-        else url = req.getPathInfo();
-        if (UrlMap.getInstance().getUrlList().containsKey(url)) { // валидация ссылки
-            if (req.getRequestURI().equals("/company/login")) { // ниже логика авторизации
-                if (session.getAttribute("sessionMember") != null)
-                    resp.sendRedirect("/company/profile");// profile page in future
-                else chain.doFilter(request, response);
-            } else if (session.getAttribute("sessionMember") != null) chain.doFilter(request, response);
-            else if (session.getAttribute("sessionMember") == null)
-                resp.sendRedirect("/company/login");
-        } else resp.sendRedirect("/company/404"); // если ссылка не валидна
+        User sessionUser = (User) session.getAttribute("sessionUser");
+        if ((url = req.getPathInfo()) == null) url = "/";
+        if (UrlMap.getInstance().getUrlList().containsKey(url)) {
+            if (sessionUser != null && (UrlMap.getInstance().getUrlList().get(url).getAccess() | sessionUser.isAdmin()))
+                chain.doFilter(request, response);
+            else if (req.getRequestURI().equals("/company/login")) chain.doFilter(request, response);
+            else if (session.getAttribute("sessionUser") == null) resp.sendRedirect("/company/login");
+            else resp.sendRedirect("/company/access");
+        } else resp.sendRedirect("/company/404");
 
     }
 

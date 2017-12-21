@@ -1,24 +1,19 @@
 
-import database.DBConnection;
-import database.MemberDAO;
-import database.PositionDAO;
-import database.UserDAO;
+import database.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.SQLException;
 
 public class UsersServlet extends HttpServlet {
 
     private Connection connection;
 
     @Override
-    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String key = req.getParameter("key");
         String value = req.getParameter("value");
         req.setAttribute("users", new UserDAO(connection).getUsersList(key, value));
@@ -26,9 +21,7 @@ public class UsersServlet extends HttpServlet {
         if (req.getQueryString() == null) {
             req.setAttribute("button", false);
         } else req.setAttribute("button", true);
-        HttpSession session = req.getSession(false);
-        req.setAttribute("sessionMember",session.getAttribute("sessionMember"));
-        req.getRequestDispatcher(UrlMap.getInstance().getUrlList().get(UrlFilter.getUrl())).forward(req, resp);
+        req.getRequestDispatcher(UrlMap.getInstance().getUrlList().get(UrlFilter.getUrl()).getPath()).forward(req, resp);
     }
 
     @Override
@@ -55,6 +48,9 @@ public class UsersServlet extends HttpServlet {
         String secondName;
         long phoneNumber;
         int position;
+        String login;
+        String password;
+        boolean admin;
         String name;
         String description;
         if (form != null) {
@@ -65,7 +61,9 @@ public class UsersServlet extends HttpServlet {
                     secondName = req.getParameter("user_secondName");
                     phoneNumber = Long.parseLong(req.getParameter("user_phoneNumber"));
                     position = Integer.parseInt(req.getParameter("position_id"));
-                    new UserDAO(connection).addUser(surname, firstName, secondName, phoneNumber, position);
+                    login = req.getParameter("user_login");
+                    password = req.getParameter("user_password");
+                    new UserDAO(connection).addUser(surname, firstName, secondName, phoneNumber, position, login, password);
                     resp.sendRedirect("/company/users");
                     break;
                 case "updateUser":
@@ -75,7 +73,9 @@ public class UsersServlet extends HttpServlet {
                     phoneNumber = Long.parseLong(req.getParameter("user_phoneNumber"));
                     position = Integer.parseInt(req.getParameter("position_id"));
                     id = Integer.parseInt(req.getParameter("user_id"));
-                    new UserDAO(connection).updateUser(id, surname, firstName, secondName, phoneNumber, position);
+                    password = req.getParameter("user_password");
+                    admin = Boolean.parseBoolean(req.getParameter("user_isAdmin"));
+                    new UserDAO(connection).updateUser(id, surname, firstName, secondName, phoneNumber, position, password, admin);
                     resp.sendRedirect("/company/users?key=user_id&value=" + id);
                     break;
                 case "addPosition":

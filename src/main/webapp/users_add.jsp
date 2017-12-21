@@ -41,19 +41,24 @@
             <table>
                 <tr>
                     <td class="add-table">Фамилия:</td>
-                    <td class="add-table"><input type="text" name="user_surname" placeholder=" Введите фамилию" size="20" required autofocus></td>
+                    <td class="add-table"><input type="text" name="user_surname" placeholder=" Введите фамилию"
+                                                 size="20" required autofocus></td>
                 </tr>
                 <tr>
                     <td class="add-table">Имя:</td>
-                    <td class="add-table"><input type="text" name="user_firstName" placeholder=" Введите имя" size="20" required autofocus></td>
+                    <td class="add-table"><input type="text" name="user_firstName" placeholder=" Введите имя" size="20"
+                                                 required autofocus></td>
                 </tr>
                 <tr>
                     <td class="add-table">Отчество:</td>
-                    <td class="add-table"><input type="text" name="user_secondName" placeholder=" Введите отчество" size="20" required autofocus></td>
+                    <td class="add-table"><input type="text" name="user_secondName" placeholder=" Введите отчество"
+                                                 size="20" required autofocus></td>
                 </tr>
                 <tr>
                     <td class="add-table">Телефон:</td>
-                    <td class="add-table"><input type="text" name="user_phoneNumber" placeholder=" Введите номер телефона" size="20" required autofocus></td>
+                    <td class="add-table"><input type="text" name="user_phoneNumber"
+                                                 placeholder=" Введите номер телефона" size="20" required autofocus>
+                    </td>
                 </tr>
                 <tr>
                     <td class="add-table">Должность:</td>

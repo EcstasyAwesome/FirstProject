@@ -4,25 +4,26 @@ import java.util.Map;
 
 public class UrlMap {
 
-    private Map<String, String> urlList = new HashMap<>();
+    private Map<String, PathAccess> urlList = new HashMap<>();
     private static UrlMap instance;
 
     private UrlMap() {
-        urlList.put("/", "/main.jsp");
-        urlList.put("/login", "/login.jsp");
-        urlList.put("/profile", "/profile.jsp");
-        urlList.put("/edit", "/edit.jsp");
-        urlList.put("/register", "/register.jsp");
-        urlList.put("/about", "/about.jsp");
-        urlList.put("/users", "/users_search.jsp");
-        urlList.put("/users/add", "/users_add.jsp");
-        urlList.put("/users/update", "/users_update.jsp");
-        urlList.put("/users/delete", "/users_delete.jsp");
-        urlList.put("/positions", "/positions_search.jsp");
-        urlList.put("/positions/add", "/positions_add.jsp");
-        urlList.put("/positions/update", "/positions_update.jsp");
-        urlList.put("/positions/delete", "/positions_delete.jsp");
-        urlList.put("/404", "/404.jsp");
+        urlList.put("/", new PathAccess("/main.jsp",true));
+        urlList.put("/login", new PathAccess("/login.jsp",true));
+        urlList.put("/profile", new PathAccess("/profile.jsp",true));
+        urlList.put("/edit", new PathAccess("/edit.jsp",true));
+        urlList.put("/register", new PathAccess("/register.jsp",true));
+        urlList.put("/about", new PathAccess("/about.jsp",true));
+        urlList.put("/access", new PathAccess("/access.jsp",true));
+        urlList.put("/users", new PathAccess("/users_search.jsp",true));
+        urlList.put("/users/add", new PathAccess("/users_add.jsp",false));
+        urlList.put("/users/update", new PathAccess("/users_update.jsp",false));
+        urlList.put("/users/delete", new PathAccess("/users_delete.jsp",false));
+        urlList.put("/positions", new PathAccess("/positions_search.jsp",true));
+        urlList.put("/positions/add", new PathAccess("/positions_add.jsp",false));
+        urlList.put("/positions/update", new PathAccess("/positions_update.jsp",false));
+        urlList.put("/positions/delete", new PathAccess("/positions_delete.jsp",false));
+        urlList.put("/404", new PathAccess("/404.jsp",true));
     }
 
     public static UrlMap getInstance(){
@@ -31,7 +32,7 @@ public class UrlMap {
         return instance;
     }
 
-    public Map<String, String> getUrlList() {
+    public Map<String, PathAccess> getUrlList() {
         return urlList;
     }
 }

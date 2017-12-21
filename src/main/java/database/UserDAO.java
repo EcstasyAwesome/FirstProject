@@ -1,9 +1,6 @@
 package database;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,16 +19,22 @@ public class UserDAO {
         result.setSecondName(resultSet.getString("user_secondName"));
         result.setPhoneNumber(resultSet.getLong("user_phoneNumber"));
         result.setPosition(resultSet.getInt("position_id"));
+        result.setLogin(resultSet.getString("user_login"));
+        result.setPassword(resultSet.getString("user_password"));
+        result.setRegisterDate(resultSet.getDate("user_registerDate"));
+        result.setAdmin(resultSet.getBoolean("user_isAdmin"));
         return result;
     }
 
     public List<User> getUsersList(String key, String value) {
         List<User> result = new ArrayList<>();
-        String request = "SELECT u.user_id, u.user_surname, u.user_firstName, u.user_secondName, u.user_phoneNumber, p.position_id " +
+        String request = "SELECT u.user_id, u.user_surname, u.user_firstName, u.user_secondName, u.user_phoneNumber, " +
+                "p.position_id, u.user_login, u.user_password, u.user_registerDate, u.user_isAdmin " +
                 "FROM users u " +
                 "LEFT JOIN positions p " +
                 "USING (position_id)";
-        String requestWithParam = "SELECT u.user_id, u.user_surname, u.user_firstName, u.user_secondName, u.user_phoneNumber, p.position_id " +
+        String requestWithParam = "SELECT u.user_id, u.user_surname, u.user_firstName, u.user_secondName, u.user_phoneNumber, " +
+                "p.position_id, u.user_login, u.user_password, u.user_registerDate, u.user_isAdmin " +
                 "FROM users u " +
                 "LEFT JOIN positions p " +
                 "USING (position_id) " +
@@ -46,23 +49,35 @@ public class UserDAO {
         return result;
     }
 
-    public void addUser(String surname, String firstName, String secondName, long phoneNumber, int position) {
-        String request = "INSERT INTO users VALUES (NULL, ?, ?, ?, ?, ?)";
+    public User checkUser(String login) throws SQLException {
+        String request = "SELECT * FROM users WHERE user_login='" + login + "'";
+        ResultSet resultSet = connection.createStatement().executeQuery(request);
+        resultSet.next();
+        User result = getUserFromResultSet(resultSet);
+        resultSet.close();
+        return result;
+    }
+
+    public void addUser(String surname, String firstName, String secondName, long phoneNumber, int position, String login, String password) {
+        String request = "INSERT INTO users VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, FALSE)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(request)) {
             preparedStatement.setString(1, surname);
             preparedStatement.setString(2, firstName);
             preparedStatement.setString(3, secondName);
             preparedStatement.setLong(4, phoneNumber);
             preparedStatement.setInt(5, position);
+            preparedStatement.setString(6, login);
+            preparedStatement.setString(7, password);
+            preparedStatement.setDate(8, new Date(new java.util.Date().getTime()));
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
         }
     }
 
-    public void updateUser(int id, String surname, String firstName, String secondName, long phoneNumber, int position) {
+    public void updateUser(int id, String surname, String firstName, String secondName, long phoneNumber, int position, String password, boolean admin) {
         String request = "UPDATE users " +
-                "SET user_surname=?, user_firstName=?, user_secondName=?, user_phoneNumber=?, position_id=? " +
+                "SET user_surname=?, user_firstName=?, user_secondName=?, user_phoneNumber=?, position_id=?, user_password=?, user_isAdmin=? " +
                 "WHERE user_id=?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(request)) {
             preparedStatement.setString(1, surname);
@@ -70,7 +85,9 @@ public class UserDAO {
             preparedStatement.setString(3, secondName);
             preparedStatement.setLong(4, phoneNumber);
             preparedStatement.setInt(5, position);
-            preparedStatement.setInt(6, id);
+            preparedStatement.setString(6, password);
+            preparedStatement.setBoolean(7,admin);
+            preparedStatement.setInt(8, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);

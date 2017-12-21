@@ -1,5 +1,7 @@
 package database;
 
+import java.util.Date;
+
 public final class User {
     private int id;
     private String surname;
@@ -7,6 +9,42 @@ public final class User {
     private String secondName;
     private long phoneNumber;
     private int position;
+    private String login;
+    private String password;
+    private Date registerDate;
+    private boolean isAdmin;
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Date getRegisterDate() {
+        return registerDate;
+    }
+
+    public void setRegisterDate(Date registerDate) {
+        this.registerDate = registerDate;
+    }
 
     public int getId() {
         return id;
