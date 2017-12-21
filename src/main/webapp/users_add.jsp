@@ -40,6 +40,16 @@
             </h4>
             <table>
                 <tr>
+                    <td class="add-table">Логин:</td>
+                    <td class="add-table"><input type="text" name="user_login" placeholder=" Придумайте логин"
+                                                 size="20" required autofocus></td>
+                </tr>
+                <tr>
+                    <td class="add-table">Пароль:</td>
+                    <td class="add-table"><input type="password" name="user_password" placeholder=" Придумайте пароль"
+                                                 size="20" required autofocus></td>
+                </tr>
+                <tr>
                     <td class="add-table">Фамилия:</td>
                     <td class="add-table"><input type="text" name="user_surname" placeholder=" Введите фамилию"
                                                  size="20" required autofocus></td>
