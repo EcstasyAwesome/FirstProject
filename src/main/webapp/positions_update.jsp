@@ -62,10 +62,11 @@
                         <td class="update-table">Доп. информация</td>
                     </tr>
                     <tr>
-                        <td class="update-table"><input type="text" size="15" value="${positions.get(0).getName()}" placeholder="Выберите ID"
-                                   name="position_name" required></td>
+                        <td class="update-table"><input type="text" size="15" value="${positions.get(0).getName()}"
+                                                        placeholder="Выберите ID"
+                                                        name="position_name" required></td>
                         <td class="update-table"><textarea name="position_description" rows="5"
-                                      required>${positions.get(0).getDescription()}</textarea></td>
+                                                           required>${positions.get(0).getDescription()}</textarea></td>
                     </tr>
                 </table>
                 <input type="hidden" name="position_id" value="${positions.get(0).getId()}">

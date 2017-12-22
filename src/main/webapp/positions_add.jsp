@@ -41,13 +41,15 @@
             <table>
                 <tr>
                     <td class="add-table">Должность:</td>
-                    <td class="add-table"><input type="text" name="position_name" placeholder=" Введите название" size="18" required
-                               autofocus>
+                    <td class="add-table"><input type="text" name="position_name" placeholder=" Введите название"
+                                                 size="18" required
+                                                 autofocus>
                     </td>
                 </tr>
                 <tr>
                     <td class="add-table">Доп. информация:</td>
-                    <td class="add-table"><textarea name="position_description" placeholder=" Ведите описание" rows="5"></textarea></td>
+                    <td class="add-table"><textarea name="position_description" placeholder=" Ведите описание"
+                                                    rows="5"></textarea></td>
                 </tr>
                 <tr>
                     <td class="add-table" colspan="2"><input type="submit" value="Добавить"></td>

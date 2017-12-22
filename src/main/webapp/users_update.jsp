@@ -98,10 +98,12 @@
                         <td class="update-table"><input type="text" size="15" value="${users.get(0).getPassword()}"
                                                         name="user_password" required></td>
                         <td class="update-table"><input type="radio" value="true" name="user_isAdmin"
-                                                        <c:if test="${users.get(0).isAdmin() eq true}">checked</c:if> required>Администратор
+                                                        <c:if test="${users.get(0).isAdmin() eq true}">checked</c:if>
+                                                        required>Администратор
                         </td>
                         <td class="update-table"><input type="radio" value="false" name="user_isAdmin"
-                                                        <c:if test="${users.get(0).isAdmin() eq false}">checked</c:if> required>Пользователь
+                                                        <c:if test="${users.get(0).isAdmin() eq false}">checked</c:if>
+                                                        required>Пользователь
                         </td>
                     </tr>
                 </table>
