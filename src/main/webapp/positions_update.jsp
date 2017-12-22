@@ -13,6 +13,9 @@
     <p>Изменить существующую должность</p>
 </header>
 <nav>
+    <form id="LOGOUT" method="post">
+        <input type="hidden" name="method" value="LOGOUT">
+    </form>
     <table class="nav-menu">
         <tr>
             <td id="nav-menu-left">
@@ -24,8 +27,7 @@
             <td id="nav-menu-right">
                 <a href="/company/profile">Профиль</a> |
                 <a href="/company/edit">Редактировать</a> |
-                <a href="#">Выйти</a>
-                </ul>
+                <input type="submit" form="LOGOUT" class="logout" value="Выход">
             </td>
         </tr>
     </table>

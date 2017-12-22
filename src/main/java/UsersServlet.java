@@ -35,6 +35,9 @@ public class UsersServlet extends HttpServlet {
                 case "DELETE":
                     doDelete(req, resp);
                     break;
+                case "LOGOUT":
+                    req.getSession(false).invalidate();
+                    break;
             }
         }
     }

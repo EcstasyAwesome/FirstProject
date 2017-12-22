@@ -13,6 +13,9 @@
     <p>Изменить существующего пользователя</p>
 </header>
 <nav>
+    <form id="LOGOUT" method="post">
+        <input type="hidden" name="method" value="LOGOUT">
+    </form>
     <table class="nav-menu">
         <tr>
             <td id="nav-menu-left">
@@ -24,8 +27,7 @@
             <td id="nav-menu-right">
                 <a href="/company/profile">Профиль</a> |
                 <a href="/company/edit">Редактировать</a> |
-                <a href="#">Выйти</a>
-                </ul>
+                <input type="submit" form="LOGOUT" class="logout" value="Выход">
             </td>
         </tr>
     </table>
@@ -64,14 +66,14 @@
                         <td class="update-table">Должность</td>
                     </tr>
                     <tr>
-                        <td class="update-table"><input type="text" size="15" value="${users.get(0).getSurname()}" placeholder="Выберите ID"
-                                   name="user_surname" required></td>
+                        <td class="update-table"><input type="text" size="15" value="${users.get(0).getSurname()}"
+                                                        name="user_surname" required></td>
                         <td class="update-table"><input type="text" size="15" value="${users.get(0).getFirstName()}"
-                                   placeholder="Выберите ID" name="user_firstName" required></td>
+                                                        name="user_firstName" required></td>
                         <td class="update-table"><input type="text" size="15" value="${users.get(0).getSecondName()}"
-                                   placeholder="Выберите ID" name="user_secondName" required></td>
+                                                        name="user_secondName" required></td>
                         <td class="update-table"><input type="text" size="15" value="${users.get(0).getPhoneNumber()}"
-                                   placeholder="Выберите ID" name="user_phoneNumber" required></td>
+                                                        name="user_phoneNumber" required></td>
                         <td class="update-table"><select form="update" name="position_id">
                             <c:if test="${positions!=null}">
                                 <c:forEach items="${positions}" var="position">
@@ -88,6 +90,19 @@
                                         selected>${users.get(0).getPosition()}</option>
                             </c:if>
                         </select></td>
+                    </tr>
+                    <tr>
+                        <td class="update-table">Пароль</td>
+                    </tr>
+                    <tr>
+                        <td class="update-table"><input type="text" size="15" value="${users.get(0).getPassword()}"
+                                                        name="user_password" required></td>
+                        <td class="update-table"><input type="radio" value="true" name="user_isAdmin"
+                                                        <c:if test="${users.get(0).isAdmin() eq true}">checked</c:if> required>Администратор
+                        </td>
+                        <td class="update-table"><input type="radio" value="false" name="user_isAdmin"
+                                                        <c:if test="${users.get(0).isAdmin() eq false}">checked</c:if> required>Пользователь
+                        </td>
                     </tr>
                 </table>
                 <input type="hidden" name="user_id" value="${users.get(0).getId()}">

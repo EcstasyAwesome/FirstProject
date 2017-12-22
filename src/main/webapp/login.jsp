@@ -16,7 +16,7 @@
             <c:if test="${login_error!=null}">
                 <p class="error">${login_error}</p>
             </c:if>
-            <p class="message">Не зарегистрированы? <a href="#">Создать аккаунт</a></p>
+            <p class="message">Не зарегистрированы? <a href="/company/register">Создать аккаунт</a></p>
         </form>
     </div>
 </div>
