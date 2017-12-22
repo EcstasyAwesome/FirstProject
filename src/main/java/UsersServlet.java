@@ -37,6 +37,7 @@ public class UsersServlet extends HttpServlet {
                     break;
                 case "LOGOUT":
                     req.getSession(false).invalidate();
+                    resp.sendRedirect("/company/login");
                     break;
             }
         }
