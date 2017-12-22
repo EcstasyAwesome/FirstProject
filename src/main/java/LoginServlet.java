@@ -24,6 +24,7 @@ public class LoginServlet extends HttpServlet {
                 User user = new UserDAO(DBConnection.getInstance().getConnection()).checkUser(login);
                 if (user.getPassword().equals(password)) {
                     session.setAttribute("sessionUser", user);
+                    System.out.println("-> Выполнен вход: " + user);
                     resp.sendRedirect("/company");
                 } else {
                     req.setAttribute("login_error", "Ошибка доступа. Не правильный пароль");

@@ -93,4 +93,10 @@ public final class User {
     public void setPosition(int position) {
         this.position = position;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s %s %s, логин '%s', " + (isAdmin ? "администратор" : "пользователь"),
+                surname, firstName, secondName, login);
+    }
 }

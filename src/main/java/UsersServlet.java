@@ -5,6 +5,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Connection;
 
@@ -36,7 +37,9 @@ public class UsersServlet extends HttpServlet {
                     doDelete(req, resp);
                     break;
                 case "LOGOUT":
-                    req.getSession(false).invalidate();
+                    HttpSession session = req.getSession(false);
+                    System.out.println("-> Выполнен выход: " + session.getAttribute("sessionUser"));
+                    session.invalidate();
                     resp.sendRedirect("/company/login");
                     break;
             }
