@@ -3,7 +3,7 @@
 <html lang="ru">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Главная</title>
+    <title>Профиль пользователя</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/style.css">
 </head>
 <body>
@@ -44,6 +44,8 @@
             </c:if>
         </c:forEach></p>
         <p>Дата регистрации: ${sessionUser.getRegisterDate()}</p>
+        <p>Статус: <c:if test="${sessionUser.isAdmin() eq true}">Администратор</c:if>
+            <c:if test="${sessionUser.isAdmin() eq false}">Пользователь</c:if></p>
     </div>
 </main>
 <footer>

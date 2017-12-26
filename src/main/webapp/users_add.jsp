@@ -89,6 +89,17 @@
                     </td>
                 </tr>
                 <tr>
+                    <td class="add-table">Статус:</td>
+                    <td class="add-table">
+                        <input type="radio" value="true" name="user_isAdmin" required>Администратор
+                    </td>
+                </tr>
+                <tr>
+                    <td class="add-table" colspan="2">
+                        <input type="radio" value="false" name="user_isAdmin" checked required>Пользователь
+                    </td>
+                </tr>
+                <tr>
                     <td class="add-table" colspan="2"><input type="submit" value="Добавить"></td>
                 </tr>
             </table>

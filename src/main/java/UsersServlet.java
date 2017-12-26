@@ -67,10 +67,13 @@ public class UsersServlet extends HttpServlet {
                     firstName = req.getParameter("user_firstName");
                     secondName = req.getParameter("user_secondName");
                     phoneNumber = Long.parseLong(req.getParameter("user_phoneNumber"));
-                    position = Integer.parseInt(req.getParameter("position_id"));
+                    String positionId = req.getParameter("position_id");
+                    position = positionId != null ? Integer.parseInt(positionId) : 5;
                     login = req.getParameter("user_login");
                     password = req.getParameter("user_password");
-                    new UserDAO(connection).addUser(surname, firstName, secondName, phoneNumber, position, login, password);
+                    String isAdmin = req.getParameter("user_isAdmin");
+                    admin = isAdmin != null && Boolean.parseBoolean(isAdmin);
+                    new UserDAO(connection).addUser(surname, firstName, secondName, phoneNumber, position, login, password, admin);
                     resp.sendRedirect("/company/users");
                     break;
                 case "updateUser":

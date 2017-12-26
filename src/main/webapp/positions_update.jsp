@@ -70,7 +70,7 @@
                     </tr>
                 </table>
                 <input type="hidden" name="position_id" value="${positions.get(0).getId()}">
-                <input type="submit" value="Сохранить изменения">
+                <p><input type="submit" value="Сохранить изменения"></p>
             </form>
         </c:if>
     </article>

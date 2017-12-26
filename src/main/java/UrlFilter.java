@@ -30,7 +30,8 @@ public class UrlFilter implements Filter {
         if (UrlMap.getInstance().getUrlList().containsKey(url)) {
             if (sessionUser != null && (UrlMap.getInstance().getUrlList().get(url).getAccess() | sessionUser.isAdmin()))
                 chain.doFilter(request, response);
-            else if (req.getRequestURI().equals("/company/login")) chain.doFilter(request, response);
+            else if (req.getRequestURI().equals("/company/login") | req.getRequestURI().equals("/company/register"))
+                chain.doFilter(request, response);
             else if (session.getAttribute("sessionUser") == null) resp.sendRedirect("/company/login");
             else resp.sendRedirect("/company/access");
         } else resp.sendRedirect("/company/404");

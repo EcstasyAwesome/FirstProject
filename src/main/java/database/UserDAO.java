@@ -58,8 +58,8 @@ public class UserDAO {
         return result;
     }
 
-    public void addUser(String surname, String firstName, String secondName, long phoneNumber, int position, String login, String password) {
-        String request = "INSERT INTO users VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, FALSE)";
+    public void addUser(String surname, String firstName, String secondName, long phoneNumber, int position, String login, String password, boolean admin) {
+        String request = "INSERT INTO users VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(request)) {
             preparedStatement.setString(1, surname);
             preparedStatement.setString(2, firstName);
@@ -69,6 +69,7 @@ public class UserDAO {
             preparedStatement.setString(6, login);
             preparedStatement.setString(7, password);
             preparedStatement.setDate(8, new Date(new java.util.Date().getTime()));
+            preparedStatement.setBoolean(9, admin);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
@@ -86,7 +87,7 @@ public class UserDAO {
             preparedStatement.setLong(4, phoneNumber);
             preparedStatement.setInt(5, position);
             preparedStatement.setString(6, password);
-            preparedStatement.setBoolean(7,admin);
+            preparedStatement.setBoolean(7, admin);
             preparedStatement.setInt(8, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {

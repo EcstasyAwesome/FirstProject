@@ -3,7 +3,7 @@
 <html lang="ru">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Главная</title>
+    <title>Редактирование профиля</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/style.css">
 </head>
 <body>
@@ -32,8 +32,35 @@
     </table>
 </nav>
 <main>
-    <h3 style="text-align: center">У Вас недостаточно прав!</h3>
-    <h4 style="text-align: center">Обратитель к администратору сайта.</h4>
+    <form id="update" method="post">
+        <input type="hidden" name="method" value="PUT">
+        <input type="hidden" name="form" value="updateUser">
+        <table align="center">
+            <tr>
+                <td class="update-table">Фамилия</td>
+                <td class="update-table">Имя</td>
+                <td class="update-table">Отчество</td>
+                <td class="update-table">Телефон</td>
+                <td class="update-table">Пароль</td>
+            </tr>
+            <tr>
+                <td class="update-table"><input type="text" size="15" value="${sessionUser.getSurname()}"
+                                                name="user_surname" required></td>
+                <td class="update-table"><input type="text" size="15" value="${sessionUser.getFirstName()}"
+                                                name="user_firstName" required></td>
+                <td class="update-table"><input type="text" size="15" value="${sessionUser.getSecondName()}"
+                                                name="user_secondName" required></td>
+                <td class="update-table"><input type="text" size="15" value="${sessionUser.getPhoneNumber()}"
+                                                name="user_phoneNumber" required></td>
+                <td class="update-table"><input type="text" size="15" value="${sessionUser.getPassword()}"
+                                                name="user_password" required></td>
+            </tr>
+        </table>
+        <input type="hidden" name="user_id" value="${sessionUser.getId()}">
+        <input type="hidden" name="position_id" value="${sessionUser.getPosition()}">
+        <input type="hidden" name="user_id" value="${sessionUser.isAdmin()}">
+        <p align="center"><input type="submit" value="Сохранить изменения"></p>
+    </form>
 </main>
 <footer>
     <address>

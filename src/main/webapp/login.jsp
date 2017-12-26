@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/login.css">
 </head>
 <body>
-<div class="login-page">
+<div class="page">
     <div class="form">
         <form class="login-form" method="post">
             <input type="text" name="login" value="${login}" placeholder="логин" required autofocus/>
