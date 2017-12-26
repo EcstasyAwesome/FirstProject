@@ -93,6 +93,7 @@
                     </tr>
                     <tr>
                         <td class="update-table">Пароль</td>
+                        <td class="update-table" colspan="2">Статус</td>
                     </tr>
                     <tr>
                         <td class="update-table"><input type="text" size="15" value="${users.get(0).getPassword()}"
