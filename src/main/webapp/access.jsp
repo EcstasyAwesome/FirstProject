@@ -9,8 +9,7 @@
 <body>
 <header>
     <img src="${pageContext.request.contextPath}/img/ecstasy_logo.jpg" alt="Логотип" height="200" width="200">
-    <h1>Главная</h1>
-    <p>my first servlet</p>
+    <h1>Ошибка</h1>
 </header>
 <nav>
     <form id="LOGOUT" method="post">
