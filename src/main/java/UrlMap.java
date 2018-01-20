@@ -4,7 +4,7 @@ import java.util.Map;
 
 public class UrlMap {
 
-    private Map<String, PathAccess> urlList = new HashMap<>();
+    private final Map<String, PathAccess> urlList = new HashMap<>();
     private static UrlMap instance;
 
     private UrlMap() {
