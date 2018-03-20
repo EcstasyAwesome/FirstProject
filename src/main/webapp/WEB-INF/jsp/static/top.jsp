@@ -6,7 +6,7 @@
 <nav>
     <div class="nav-menu">
         <a href="${pageContext.request.contextPath}/">Главная</a>
-        <a href="${pageContext.request.contextPath}/positions">Должностя</a>
+        <a href="${pageContext.request.contextPath}/positions">Должности</a>
         <a href="${pageContext.request.contextPath}/users">Пользователи</a>
     </div>
 </nav>
