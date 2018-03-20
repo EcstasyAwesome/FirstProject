@@ -1,14 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<html lang="ru">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Main page</title>
+    <title>Главная</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/stylesheet/style.css">
 </head>
 <body>
-<div align="center">
-    <h2>Hello world!<br>
-        <a href="/company">Company</a><br>
-        <a href="/company/about">about</a></h2>
-</div>
+<jsp:include page="/WEB-INF/jsp/static/top.jsp"/>
+<main>
+    <h2 style="text-align: center">Добро пожаловать</h2>
+</main>
+<jsp:include page="/WEB-INF/jsp/static/bottom.jsp"/>
 </body>
 </html>

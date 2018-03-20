@@ -1,0 +1,141 @@
+/*Основной шаблон*/
+a {
+    color: black;
+    text-decoration: none;
+}
+
+body {
+    background-color: rgba(255, 255, 255, 0);
+    font: 16px/1.42857 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: 0;
+}
+
+header {
+    background-color: black;
+    border: 1px solid black;
+    height: 200px;
+    width: 1200px;
+    min-width: 1200px;
+    margin: auto;
+}
+
+nav {
+    display: table;
+    background-color: #eee;
+    border: 1px solid #ddd;
+    height: 45px;
+    width: 1200px;
+    min-width: 1200px;
+    margin: auto;
+}
+
+nav a {
+    padding: 14px 10px;
+    line-height: 45px;
+    transition: background-color .3s;
+}
+
+nav a:hover {
+    background: silver;
+    padding: 14px 10px;
+}
+
+.nav-menu {
+    float: left;
+    text-align: left;
+    height: 100%;
+    width: 50%;
+    display: table-cell;
+}
+
+main {
+    display: table;
+    border: 1px solid #ddd;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    width: 1180px;
+    min-width: 1180px;
+    padding: 10px 10px;
+    margin: auto;
+}
+
+article {
+    float: left;
+    width: 980px;
+    padding-right: 10px;
+    display: table-cell;
+}
+
+aside {
+    border-left: 2px solid #ddd;
+    float: right;
+    width: 178px;
+    padding-left: 10px;
+    display: table-cell;
+}
+
+aside h4 {
+    margin: 0;
+}
+
+menu {
+    padding: 0;
+    list-style-type: none;
+}
+
+menu a:link, a:visited {
+    padding-left: 16px;
+    text-align: left;
+}
+
+menu a:hover {
+    padding-left: 16px;
+    background: url("/resources/img/pointer.png") no-repeat left center;
+    text-align: left;
+}
+
+footer {
+    background-color: #373737;
+    border: 1px solid #373737;
+    height: 45px;
+    width: 1200px;
+    min-width: 1200px;
+    margin: auto;
+    text-align: center;
+    color: #ffffff;
+}
+
+footer small, footer a {
+    color: #ffffff;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+form {
+    margin: 0;
+}
+
+/*Стиль таблици заголовков*/
+.table-top {
+    border: solid 1px black;
+    background: #eee;
+    font-weight: bold;
+}
+
+/*Стиль таблици*/
+.table-main {
+    border: solid 1px black;
+    padding: 3px;
+    font-weight: normal;
+    text-align: center;
+}
+
+/*Прозрачное поле ввода*/
+.transparent-input {
+    border: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 16px
+}
