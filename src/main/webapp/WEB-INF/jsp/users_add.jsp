@@ -1,10 +1,10 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html lang="ru">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Добавить пользователя</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/stylesheet/style.css">
+    <link rel="stylesheet" href="<c:url value="/resources/stylesheet/style.css"/>">
 </head>
 <body>
 <jsp:include page="/WEB-INF/jsp/static/top.jsp"/>
@@ -20,15 +20,20 @@
                     <th width="130" class="table-top">Должность</th>
                 </tr>
                 <tr>
-                    <td class="table-main"><input class="transparent-input" name="surname" required autofocus></td>
-                    <td class="table-main"><input class="transparent-input" name="firstName" required></td>
-                    <td class="table-main"><input class="transparent-input" name="middleName" required></td>
                     <td class="table-main">
-                        <input class="transparent-input" name="phone" pattern="380[0-9]{9}" required>
+                        <input class="transparent-input" title="Фамилия" name="surname" required autofocus>
+                    </td>
+                    <td class="table-main"><input class="transparent-input" title="Имя" name="firstName" required></td>
+                    <td class="table-main">
+                        <input class="transparent-input" title="Отчество" name="middleName" required>
                     </td>
                     <td class="table-main">
-                        <select class="transparent-input" name="position" required>
+                        <input class="transparent-input" title="Телефон" name="phone" pattern="380[0-9]{9}" required>
+                    </td>
+                    <td class="table-main">
+                        <select class="transparent-input" title="Должность" name="position" required>
                             <option selected disabled>Выберите должность</option>
+                            <%--@elvariable id="positions" type="java.util.List"--%>
                             <c:forEach items="${positions}" var="that">
                                 <option value="${that.id}">${that.name}</option>
                             </c:forEach>

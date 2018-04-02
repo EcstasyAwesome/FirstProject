@@ -1,10 +1,10 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html lang="ru">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Изменить пользователя</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/stylesheet/style.css">
+    <link rel="stylesheet" href="<c:url value="/resources/stylesheet/style.css"/>">
 </head>
 <body>
 <jsp:include page="/WEB-INF/jsp/static/top.jsp"/>
@@ -22,25 +22,30 @@
                     <th width="130" class="table-top">Телефон*</th>
                     <th width="130" class="table-top">Должность*</th>
                 </tr>
+                <%--@elvariable id="user" type="com.github.firstproject.dao.pojo.User"--%>
                 <c:if test="${user!=null}">
                     <tr>
                         <td class="table-main">${user.id}</td>
                         <td class="table-main">
-                            <input class="transparent-input" value="${user.surname}" name="surname" autofocus required>
+                            <input class="transparent-input" title="Фамилия" value="${user.surname}" name="surname"
+                                   autofocus required>
                         </td>
                         <td class="table-main">
-                            <input class="transparent-input" value="${user.firstName}" name="firstName" required>
+                            <input class="transparent-input" title="Имя" value="${user.firstName}" name="firstName"
+                                   required>
                         </td>
                         <td class="table-main">
-                            <input class="transparent-input" value="${user.middleName}" name="middleName" required>
+                            <input class="transparent-input" title="Отчество" value="${user.middleName}"
+                                   name="middleName" required>
                         </td>
                         <td class="table-main">
-                            <input class="transparent-input" value="${user.phone}" pattern="380[0-9]{9}"
+                            <input class="transparent-input" title="Телефон" value="${user.phone}" pattern="380[0-9]{9}"
                                    name="phone" required>
                         </td>
                         <td class="table-main">
-                            <select class="transparent-input" name="position" required>
+                            <select class="transparent-input" title="Должность" name="position" required>
                                 <option disabled>Выберите должность</option>
+                                <%--@elvariable id="positions" type="java.util.List"--%>
                                 <c:forEach items="${positions}" var="that">
                                     <c:if test="${that.id==user.id}">
                                         <option selected value="${that.id}">${that.name}</option>
