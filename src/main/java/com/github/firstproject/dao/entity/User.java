@@ -1,6 +1,7 @@
-package com.github.firstproject.dao.pojo;
+package com.github.firstproject.dao.entity;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class User {
 
@@ -66,5 +67,24 @@ public class User {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return id == user.id &&
+                phone == user.phone &&
+                position == user.position &&
+                Objects.equals(surname, user.surname) &&
+                Objects.equals(firstName, user.firstName) &&
+                Objects.equals(middleName, user.middleName) &&
+                Objects.equals(date, user.date);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, surname, firstName, middleName, phone, position, date);
     }
 }

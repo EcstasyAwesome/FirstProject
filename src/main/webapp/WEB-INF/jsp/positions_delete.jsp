@@ -18,7 +18,7 @@
                     <th width="200" class="table-top">Должность</th>
                     <th width="400" class="table-top">Доп. информация</th>
                 </tr>
-                <%--@elvariable id="position" type="com.github.firstproject.dao.pojo.Position"--%>
+                <%--@elvariable id="position" type="com.github.firstproject.dao.entity.Position"--%>
                 <c:if test="${position!=null}">
                     <tr>
                         <td class="table-main">${position.id}</td>

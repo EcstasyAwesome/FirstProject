@@ -2,7 +2,7 @@ package com.github.firstproject.servlet.positions;
 
 import com.github.firstproject.dao.DaoService;
 import com.github.firstproject.dao.model.PositionDao;
-import com.github.firstproject.dao.pojo.Position;
+import com.github.firstproject.dao.entity.Position;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

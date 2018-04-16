@@ -1,7 +1,7 @@
 package com.github.firstproject.dao.impl;
 
 import com.github.firstproject.dao.model.UserDao;
-import com.github.firstproject.dao.pojo.User;
+import com.github.firstproject.dao.entity.User;
 import com.github.firstproject.util.DBConnection;
 
 import java.sql.*;

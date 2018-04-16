@@ -22,7 +22,7 @@
                     <th width="130" class="table-top">Телефон*</th>
                     <th width="130" class="table-top">Должность*</th>
                 </tr>
-                <%--@elvariable id="user" type="com.github.firstproject.dao.pojo.User"--%>
+                <%--@elvariable id="user" type="com.github.firstproject.dao.entity.User"--%>
                 <c:if test="${user!=null}">
                     <tr>
                         <td class="table-main">${user.id}</td>

@@ -22,8 +22,8 @@
                     <th width="130" class="table-top">Должность</th>
                     <th width="130" class="table-top">Регистрация</th>
                 </tr>
-                <%--@elvariable id="user" type="com.github.firstproject.dao.pojo.User"--%>
-                <%--@elvariable id="position" type="com.github.firstproject.dao.pojo.Position"--%>
+                <%--@elvariable id="user" type="com.github.firstproject.dao.entity.User"--%>
+                <%--@elvariable id="position" type="com.github.firstproject.dao.entity.Position"--%>
                 <c:if test="${user!=null}">
                     <tr>
                         <td class="table-main">${user.id}</td>

@@ -1,6 +1,6 @@
 package com.github.firstproject.dao.model;
 
-import com.github.firstproject.dao.pojo.Position;
+import com.github.firstproject.dao.entity.Position;
 
 import java.util.List;
 

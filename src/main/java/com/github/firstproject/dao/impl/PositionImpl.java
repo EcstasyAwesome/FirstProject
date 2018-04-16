@@ -1,7 +1,7 @@
 package com.github.firstproject.dao.impl;
 
 import com.github.firstproject.dao.model.PositionDao;
-import com.github.firstproject.dao.pojo.Position;
+import com.github.firstproject.dao.entity.Position;
 import com.github.firstproject.util.DBConnection;
 
 import java.sql.*;
