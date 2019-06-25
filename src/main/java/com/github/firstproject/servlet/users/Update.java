@@ -20,9 +20,13 @@ public class Update extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("user", userDao.read(Long.parseLong(req.getParameter("id"))));
-        req.setAttribute("positions", positionDao.getList());
-        req.getRequestDispatcher("/WEB-INF/jsp/users_update.jsp").forward(req, resp);
+        try {
+            req.setAttribute("user", userDao.read(Long.parseLong(req.getParameter("id"))));
+            req.setAttribute("positions", positionDao.getList());
+            req.getRequestDispatcher("/WEB-INF/jsp/users_update.jsp").forward(req, resp);
+        } catch (NullPointerException error) {
+            resp.sendError(500);
+        }
     }
 
     @Override

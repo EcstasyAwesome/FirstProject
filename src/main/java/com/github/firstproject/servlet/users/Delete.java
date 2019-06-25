@@ -20,10 +20,14 @@ public class Delete extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = userDao.read(Long.parseLong(req.getParameter("id")));
-        req.setAttribute("user", user);
-        req.setAttribute("position", positionDao.read(user.getPosition()));
-        req.getRequestDispatcher("/WEB-INF/jsp/users_delete.jsp").forward(req, resp);
+        try {
+            User user = userDao.read(Long.parseLong(req.getParameter("id")));
+            req.setAttribute("user", user);
+            req.setAttribute("position", positionDao.read(user.getPosition()));
+            req.getRequestDispatcher("/WEB-INF/jsp/users_delete.jsp").forward(req, resp);
+        } catch (NullPointerException error) {
+            resp.sendError(500);
+        }
     }
 
     @Override

@@ -17,8 +17,12 @@ public class Delete extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("position", positionDao.read(Long.parseLong(req.getParameter("id"))));
-        req.getRequestDispatcher("/WEB-INF/jsp/positions_delete.jsp").forward(req, resp);
+        try {
+            req.setAttribute("position", positionDao.read(Long.parseLong(req.getParameter("id"))));
+            req.getRequestDispatcher("/WEB-INF/jsp/positions_delete.jsp").forward(req, resp);
+        } catch (NullPointerException error) {
+            resp.sendError(500);
+        }
     }
 
     @Override

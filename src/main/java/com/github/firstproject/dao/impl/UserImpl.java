@@ -66,19 +66,18 @@ public class UserImpl implements UserDao {
     }
 
     @Override
-    public User read(Long id) {
-        User user = null;
+    public User read(Long id) throws NullPointerException {
         String request = "SELECT * FROM users WHERE id=?";
         try (Connection connection = DBConnection.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(request)) {
             preparedStatement.setLong(1, id);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                if (resultSet.next()) user = getFromResultSet(resultSet);
+                if (resultSet.next()) return getFromResultSet(resultSet);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return user;
+        throw new NullPointerException();
     }
 
     @Override

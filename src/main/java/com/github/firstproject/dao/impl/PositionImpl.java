@@ -58,19 +58,18 @@ public class PositionImpl implements PositionDao {
     }
 
     @Override
-    public Position read(Long id) {
-        Position position = null;
+    public Position read(Long id) throws NullPointerException {
         String request = "SELECT * FROM positions WHERE id=?";
         try (Connection connection = DBConnection.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(request)) {
             preparedStatement.setLong(1, id);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                if (resultSet.next()) position = getFromResultSet(resultSet);
+                if (resultSet.next()) return getFromResultSet(resultSet);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return position;
+        throw new NullPointerException();
     }
 
     @Override
