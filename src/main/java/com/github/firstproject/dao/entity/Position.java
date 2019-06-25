@@ -2,7 +2,7 @@ package com.github.firstproject.dao.entity;
 
 import java.util.Objects;
 
-public final class Position {
+public class Position {
 
     private long id;
     private String name;

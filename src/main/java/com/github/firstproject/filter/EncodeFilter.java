@@ -1,5 +1,6 @@
 package com.github.firstproject.filter;
 
+import com.github.firstproject.util.DBConnection;
 import com.github.firstproject.util.Info;
 
 import javax.servlet.*;
@@ -23,5 +24,10 @@ public class EncodeFilter implements Filter {
         response.setCharacterEncoding(ENCODING);
         response.setContentType("text/html; charset=" + ENCODING);
         chain.doFilter(request, response);
+    }
+
+    @Override
+    public void destroy() {
+        DBConnection.close();
     }
 }

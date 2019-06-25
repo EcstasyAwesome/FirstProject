@@ -10,7 +10,7 @@ import java.util.List;
 
 public class PositionImpl implements PositionDao {
 
-    private PositionImpl(){
+    private PositionImpl() {
     }
 
     private static PositionImpl instance;
@@ -32,11 +32,11 @@ public class PositionImpl implements PositionDao {
     public List<Position> getList() {
         List<Position> result = new ArrayList<>();
         String request = "SELECT * FROM positions";
-        try (Connection connection = DBConnection.getConnection()) {
-            try (ResultSet resultSet = connection.createStatement().executeQuery(request)) {
-                while (resultSet.next()) {
-                    result.add(getFromResultSet(resultSet));
-                }
+        try (Connection connection = DBConnection.getConnection();
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(request)) {
+            while (resultSet.next()) {
+                result.add(getFromResultSet(resultSet));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -47,12 +47,11 @@ public class PositionImpl implements PositionDao {
     @Override
     public void create(Position instance) {
         String request = "INSERT INTO positions VALUES(NULL,?,?)";
-        try (Connection connection = DBConnection.getConnection()) {
-            try (PreparedStatement preparedStatement = connection.prepareStatement(request)) {
-                preparedStatement.setString(1, instance.getName());
-                preparedStatement.setString(2, instance.getDescription());
-                preparedStatement.executeUpdate();
-            }
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(request)) {
+            preparedStatement.setString(1, instance.getName());
+            preparedStatement.setString(2, instance.getDescription());
+            preparedStatement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -61,11 +60,12 @@ public class PositionImpl implements PositionDao {
     @Override
     public Position read(Long id) {
         Position position = null;
-        String request = "SELECT * FROM positions WHERE id='" + id + "'";
-        try (Connection connection = DBConnection.getConnection()) {
-            try (ResultSet resultSet = connection.createStatement().executeQuery(request)) {
-                resultSet.next();
-                position = getFromResultSet(resultSet);
+        String request = "SELECT * FROM positions WHERE id=?";
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(request)) {
+            preparedStatement.setLong(1, id);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) position = getFromResultSet(resultSet);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -76,13 +76,12 @@ public class PositionImpl implements PositionDao {
     @Override
     public void update(Position instance) {
         String request = "UPDATE positions SET name=?, description=? WHERE id=?";
-        try (Connection connection = DBConnection.getConnection()) {
-            try (PreparedStatement preparedStatement = connection.prepareStatement(request)) {
-                preparedStatement.setString(1, instance.getName());
-                preparedStatement.setString(2, instance.getDescription());
-                preparedStatement.setLong(3, instance.getId());
-                preparedStatement.executeUpdate();
-            }
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(request)) {
+            preparedStatement.setString(1, instance.getName());
+            preparedStatement.setString(2, instance.getDescription());
+            preparedStatement.setLong(3, instance.getId());
+            preparedStatement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -91,11 +90,10 @@ public class PositionImpl implements PositionDao {
     @Override
     public void delete(Long id) {
         String request = "DELETE FROM positions WHERE id=?";
-        try (Connection connection = DBConnection.getConnection()) {
-            try (PreparedStatement preparedStatement = connection.prepareStatement(request)) {
-                preparedStatement.setLong(1, id);
-                preparedStatement.executeUpdate();
-            }
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(request)) {
+            preparedStatement.setLong(1, id);
+            preparedStatement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
